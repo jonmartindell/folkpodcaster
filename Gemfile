@@ -14,4 +14,5 @@ end
 group :test, :development do
   gem "standard"
   gem "pry"
+  gem "webmock"
 end

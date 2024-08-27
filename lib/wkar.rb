@@ -1,7 +1,7 @@
 require "net/http"
 require "uri"
 
-DEFAULT_RECORDING_MINUTES = 0
+DEFAULT_RECORDING_MINUTES = 15
 DEFAULT_UUID = SecureRandom.uuid[-9..]
 DEFAULT_FILENAME = "output.aac"
 

@@ -1,22 +1,28 @@
 require "google_drive"
 
-# Creates a session. This will prompt the credential via command line for the
-# first time and save it to config.json file for later usages.
-# See this document to learn how to create config.json:
-# https://github.com/gimite/google-drive-ruby/blob/master/doc/authorization.md
-session = GoogleDrive::Session.from_service_account_key("folkpodcast-a943fd7d30b7.json")
+# https://github.com/gimite/google-drive-ruby
 
-# Gets list of remote files.
-session.files.each do |file|
-  p file.title
+class GDrive
+  def initialize
+    @session = GoogleDrive::Session.from_service_account_key("folkpodcast-a943fd7d30b7.json")
+  end
+
+  def upload_file(file)
+    session.upload_from_file(file.path, File.basename(file.path), convert: false)
+  end
+
+  def list_files
+    session.files.map(&:title)
+  end
+
+  def read_file(filename)
+    # # Downloads to a local file.
+    # file = session.file_by_title("hello.txt")
+    # file.download_to_file("/path/to/hello.txt")
+    session.file_by_title(filename)
+  end
+
+  private
+
+  attr_accessor :session
 end
-
-# # Uploads a local file.
-# session.upload_from_file("/path/to/hello.txt", "hello.txt", convert: false)
-
-# # Downloads to a local file.
-# file = session.file_by_title("hello.txt")
-# file.download_to_file("/path/to/hello.txt")
-
-# # Updates content of the remote file.
-# file.update_from_file("/path/to/hello.txt")
