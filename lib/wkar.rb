@@ -1,10 +1,14 @@
 require "net/http"
 require "uri"
 
+DEFAULT_RECORDING_MINUTES = 0
+DEFAULT_UUID = SecureRandom.uuid[-9..]
+DEFAULT_FILENAME = "output.aac"
+
 class Wkar
-  def self.run
+  def self.record
     # Define the URL and create HTTP connection
-    url = URI.parse("https://wkar.streamguys1.com/wkarfm-web.aac?uuid=b3jxor1pe")
+    url = URI.parse("https://wkar.streamguys1.com/wkarfm-web.aac?uuid=#{DEFAULT_UUID}")
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
 
@@ -24,7 +28,7 @@ class Wkar
     request["Referrer-Policy"] = "strict-origin-when-cross-origin"
 
     # Open the file to save the response
-    File.open("output.aac", "wb") do |file|
+    File.open(DEFAULT_FILENAME, "wb") do |file|
       # Start the timer
       start_time = Time.now
 
@@ -34,8 +38,8 @@ class Wkar
           # Calculate elapsed time
           elapsed_time = Time.now - start_time
 
-          # Break the loop if 15 minutes have passed
-          break if elapsed_time > 15 * 60
+          # Break the loop if x minutes have passed
+          break if elapsed_time > DEFAULT_RECORDING_MINUTES * 60
 
           # Write the chunk to the file
           file.write(chunk)
@@ -43,7 +47,6 @@ class Wkar
         break
       end
     end
-
-    puts "Data has been saved to output.aac"
+    File.new(DEFAULT_FILENAME, "r")
   end
 end

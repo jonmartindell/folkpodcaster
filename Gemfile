@@ -6,5 +6,12 @@ source "https://rubygems.org"
 gem "google_drive"
 gem "mutex_m"
 gem "rake"
-gem "rspec"
-gem "standard"
+
+group :test do
+  gem "rspec"
+end
+
+group :test, :development do
+  gem "standard"
+  gem "pry"
+end
