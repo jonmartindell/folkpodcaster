@@ -37,6 +37,9 @@ class Wkar
         response.read_body do |chunk|
           # Calculate elapsed time
           elapsed_time = Time.now - start_time
+          if elapsed_time % 600 == 0
+            puts "Elapsed minutes: #{elapsed_time / 60}"
+          end
 
           # Break the loop if x minutes have passed
           break if elapsed_time > minutes * 60
