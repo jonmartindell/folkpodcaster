@@ -4,11 +4,14 @@ require "google_drive"
 
 class GDrive
   def initialize
-    @session = GoogleDrive::Session.from_service_account_key("folkpodcast-a943fd7d30b7.json")
+    @session = GoogleDrive::Session.from_config("google_config.json", {
+      client_id: ENV["CLIENT_ID"],
+      client_secret: ENV["CLIENT_SECRET"]
+    })
   end
 
-  def upload_file(file)
-    session.upload_from_file(file.path, File.basename(file.path), convert: false)
+  def upload_file(file, filename)
+    session.upload_from_file(file.path, filename, convert: false)
   end
 
   def list_files

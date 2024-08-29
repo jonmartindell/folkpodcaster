@@ -3,10 +3,10 @@ require "uri"
 
 DEFAULT_RECORDING_MINUTES = 0.20 # 12 seconds
 DEFAULT_UUID = SecureRandom.uuid[-9..]
-DEFAULT_FILENAME = "recordings/output.aac"
+DEFAULT_FILENAME = "recordings/output.aac" # I want it to overwrite because I use googledrive for long term persistence
 
 class Wkar
-  def self.record
+  def self.record(minutes = DEFAULT_RECORDING_MINUTES)
     # Define the URL and create HTTP connection
     url = URI.parse("https://wkar.streamguys1.com/wkarfm-web.aac?uuid=#{DEFAULT_UUID}")
     http = Net::HTTP.new(url.host, url.port)
@@ -39,7 +39,7 @@ class Wkar
           elapsed_time = Time.now - start_time
 
           # Break the loop if x minutes have passed
-          break if elapsed_time > DEFAULT_RECORDING_MINUTES * 60
+          break if elapsed_time > minutes * 60
 
           # Write the chunk to the file
           file.write(chunk)

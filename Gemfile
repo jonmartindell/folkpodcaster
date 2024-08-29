@@ -15,4 +15,5 @@ group :test, :development do
   gem "standard"
   gem "pry"
   gem "webmock"
+  gem "dotenv"
 end
