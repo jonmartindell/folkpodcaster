@@ -1,9 +1,9 @@
 require "net/http"
 require "uri"
 
-DEFAULT_RECORDING_MINUTES = 15
+DEFAULT_RECORDING_MINUTES = 0.20 # 12 seconds
 DEFAULT_UUID = SecureRandom.uuid[-9..]
-DEFAULT_FILENAME = "output.aac"
+DEFAULT_FILENAME = "recordings/output.aac"
 
 class Wkar
   def self.record
