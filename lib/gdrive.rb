@@ -11,7 +11,10 @@ class GDrive
   end
 
   def upload_file(file, filename)
-    session.upload_from_file(file.path, filename, convert: false)
+    file = session.upload_from_file(file.path, filename, convert: false)
+    file.acl.push(type: "anyone", role: "reader") # Make it be public via link
+    file.reload_metadata
+    file
   end
 
   def list_files
