@@ -7,5 +7,6 @@ class Recorder
     gdrive = GDrive.new
     filename = "Folk with Matt Watroba #{Time.now.strftime("%Y-%m-%d")}.aac"
     gdrive.upload_file(file, filename)
+    File.delete(file)    # don't pay for volume space we don't need to
   end
 end
