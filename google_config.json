@@ -1,7 +1,0 @@
-{
-  "scope": [
-    "https://www.googleapis.com/auth/drive",
-    "https://spreadsheets.google.com/feeds/"
-  ],
-  "refresh_token": "1//04I5d5KmbMNPYCgYIARAAGAQSNwF-L9IrAmGu7ejlS_3T2GqUemp5YWDEam5y5O19JS2sKKqjoz5OqrGoIeFMKmI8CWuznDvVw4k"
-}
