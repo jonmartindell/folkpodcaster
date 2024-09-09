@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Folk with Matt Watroba</title>
+    <link>https://www.wkar.org</link>
+    <description>WKAR&#39;s Weekly Folk with Matt Watroba</description>
+    <language>en-us</language>
+    <copyright>NA</copyright>
+    <lastBuildDate>Mon, 09 Sep 2024 19:28:22 +0000</lastBuildDate>
+    <item>
+      <title>Folk with Matt Watro (WKAR) 08/25/24 01</title>
+      <link>https://www.wkar.org</link>
+      <description>Folk with Matt Watro (WKAR) 08/25/24 01</description>
+      <enclosure url="https://example.com/show.aac"
+        length="1234"
+        type="audio/mpeg"/>
+      <pubDate>Sun, 25 Aug 2024 23:16:59 +0000</pubDate>
+      <guid isPermaLink="false">80a0fc2f-e1f8-43da-8b7f-2bf5d8766080</guid>
+    </item>
+  </channel>
+</rss>
