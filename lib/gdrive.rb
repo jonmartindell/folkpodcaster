@@ -4,10 +4,22 @@ require "google_drive"
 
 class GDrive
   def initialize
-    @session = GoogleDrive::Session.from_config("google_config.json", {
+    credentials = Google::Auth::UserRefreshCredentials.new(
+      additional_parameters: {
+        "access_type" => "offline",
+        "include_granted_scopes" => "true"
+      },
       client_id: ENV["CLIENT_ID"],
-      client_secret: ENV["CLIENT_SECRET"]
-    })
+      client_secret: ENV["CLIENT_SECRET"],
+      scope: [
+        "https://www.googleapis.com/auth/drive",
+        "https://spreadsheets.google.com/feeds/"
+      ],
+      redirect_uri: "http://localhost:3000/auth/google_drive/callback"
+    )
+    credentials.refresh_token = JSON.parse(File.read("google_config.json"))["refresh_token"]
+    credentials.fetch_access_token!
+    @session = GoogleDrive::Session.from_credentials(credentials)
   end
 
   def upload_file(file, filename)
