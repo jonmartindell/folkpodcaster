@@ -8,7 +8,7 @@ task default: :dotenv do
   # puts "Done: #{Time.now}."
   puts "Uploading file..."
   file = File.new(Wkar::DEFAULT_FILENAME, "r")
-  puts "File path: #{f.path}, file size: #{f.size}"
+  puts "File path: #{file.path}, file size: #{file.size}"
   gdrive = GDrive.new
   filename = "Folk with Matt Watroba #{file.mtime.strftime("%Y-%m-%d")}.aac"
   gdrive.upload_file(file, filename)
