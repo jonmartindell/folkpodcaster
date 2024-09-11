@@ -6,7 +6,6 @@ source "https://rubygems.org"
 gem "google_drive"
 gem "mutex_m"
 gem "rake"
-gem "rss"
 
 group :test do
   gem "rspec"

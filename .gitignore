@@ -1,4 +1,5 @@
 *.json
 *.aac
+*.mp3
 recordings
 .env

@@ -15,6 +15,11 @@ class GDrive
     file
   end
 
+  def replace_file(file, filename)
+    old_file = session.file_by_title(filename)
+    old_file.update_from_file(file)
+  end
+
   def list_files
     session.files.map(&:title)
   end

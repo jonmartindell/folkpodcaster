@@ -7,15 +7,3 @@ task default: :dotenv do
   Recorder.new.record_folk_with_matt_watroba
   puts "Done: #{Time.now}."
 end
-
-task upload_only: :dotenv do
-  puts "Uploading file..."
-  file = File.new(Wkar::DEFAULT_FILENAME, "r")
-  puts "File path: #{file.path}, file size: #{file.size}"
-  gdrive = GDrive.new
-  filename = "Folk with Matt Watroba #{file.mtime.strftime("%Y-%m-%d")}.aac"
-  gdrive.upload_file(file, filename)
-  puts "Uploaded file"
-  puts "Files on drive: #{gdrive.list_files}"
-  File.delete(file)    # don't pay for volume space we don't need to
-end

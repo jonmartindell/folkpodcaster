@@ -4,7 +4,7 @@ require "uri"
 class Wkar
   DEFAULT_RECORDING_MINUTES = 0.20 # 12 seconds
   DEFAULT_UUID = SecureRandom.uuid[-9..]
-  DEFAULT_FILENAME = "recordings/output.aac" # I want it to overwrite because I use googledrive for long term persistence
+  DEFAULT_FILENAME = "recordings/output.mp3" # I want it to overwrite because I use googledrive for long term persistence
 
   def self.record(minutes = DEFAULT_RECORDING_MINUTES)
     # Define the URL and create HTTP connection
